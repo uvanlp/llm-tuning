@@ -1,6 +1,5 @@
-# LLM Finetuning 
 
-**Goal**: provide a codebase to easily fine-tune some open-source LLMs and reproduce the results. 
+This package is to provide a codebase to easily fine-tune some open-source LLMs and reproduce the results. 
 
 So far, the codebase supports 
 
@@ -26,4 +25,56 @@ We provide the instructions for setting up the environment for
 ## A simple example
 
 Please refer to the simple example in `demo.py` for how to use this codebase for training and test.
+
+Here is a simple example of using the package for fine-tuning or prediction on the SST2 dataset. 
+
+```python
+import fire
+
+from lora import Llama_Lora
+
+
+def main(
+        task: str = "eval",
+):
+    base_model_name: str = "meta-llama/Llama-2-7b-hf"
+    m = Llama_Lora(
+        base_model=base_model_name,
+    )
+    if task == "train":
+        m.train(
+            train_file = "data/sst2/train.json",
+            val_file = "data/sst2/val.json",
+            output_dir = "./ckp_sst_llama2_lora",
+            train_batch_size = 32,
+            num_epochs = 1,
+            group_by_length = False,
+            logging_steps = 5,
+            val_steps = 20,
+            val_batch_size = 8,
+        )
+    elif task == "eval":
+        m.predict(
+            input_file = "data/sst2/val.json",
+            max_new_tokens = 32,
+            verbose = True,
+        )
+    else:
+        raise ValueError(f"Unrecognized task: {task}")
+
+
+if __name__ == "__main__":
+    fire.Fire(main)
+```
+
+For prediction, please use 
+```bash
+python demo.py
+```
+
+For fine-tuning, please use 
+```bash
+python demo.py --task train
+```
+
 
