@@ -85,4 +85,4 @@ python demo.py --task train
 - [Zhengguang Wang](https://zhengguangw.github.io)
 
 
-In addition, this package has been tested by many members from the [UVA ILP] group via their research projects.
+In addition, this package has been tested by many members from the [UVA ILP](https://uvanlp.org) group via their research projects.
