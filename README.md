@@ -77,4 +77,14 @@ For fine-tuning, please use
 python demo.py --task train
 ```
 
+---
 
+## Contributors
+
+- [Yangfeng Ji](https://yangfengji.net)
+- [Wanyu Du](https://wyu-du.github.io)
+- [Aidan San](https://aidansan.github.io)
+- [Zhengguang Wang](https://zhengguangw.github.io)
+
+
+In addition, this package has been tested by many members from the [UVA ILP] group via their research projects.
