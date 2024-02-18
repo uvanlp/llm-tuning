@@ -22,11 +22,9 @@ We provide the instructions for setting up the environment for
 
 ---
 
-## A simple example
+## A Simple Example
 
-Please refer to the simple example in `demo.py` for how to use this codebase for training and test.
-
-Here is a simple example of using the package for fine-tuning or prediction on the SST2 dataset. 
+Here is a simple example of using the package for fine-tuning or prediction on the SST2 dataset. You can also find this demo code in `demo.py`. 
 
 ```python
 import fire
