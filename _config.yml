@@ -1,0 +1,6 @@
+theme: jekyll-theme-slate
+title: UVA LLM Finetuning
+description: The LLM fine-tuning package developed by the UVA ILP group
+github:
+  is_project_page: true
+  
