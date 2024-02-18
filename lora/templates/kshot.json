@@ -1,0 +1,8 @@
+
+{
+    "description": "Template used by LLM-Finetuning.",
+    "response_split": "### Response:",
+    "instruction": "Following the examples, write a response that appropriately completes the request.\n\n### Instruction:\n{instruction}",
+    "demo_part": "\n\n### Input:\n{input}\n\n### Response:\n{output}",
+    "query_part": "\n\n### Input:\n{input}\n\n### Response:\n"
+}

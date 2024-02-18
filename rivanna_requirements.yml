@@ -1,0 +1,9 @@
+peft
+transformers
+fire
+datasets
+accelerate
+bitsandbytes
+scipy
+sentencepiece
+protobuf
