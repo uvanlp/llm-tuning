@@ -11,6 +11,8 @@ So far, the codebase supports
   - Flan-T5
 - In-context learning
 
+For detailed instruction, please refer to the Notion site: [LLM Fine-tuning](https://yangfengji.notion.site/UVA-LLM-Fine-tuning-b5a80d6401e24ec6bb7900c4a3400918?pvs=4)
+
 ---
 
 ## Environment Setup
