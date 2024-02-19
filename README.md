@@ -17,8 +17,8 @@ So far, the codebase supports
 
 We provide the instructions for setting up the environment for 
 
-- [UVA Rivanna](https://www.notion.so/Environment-Configuration-on-Rivanna-5cb1f289049146e6ae63546031df6498?pvs=4), and 
-- [UVA CS Servers]()
+- [UVA Rivanna](docs/rivanna.md), and 
+- [UVA CS Servers](docs/cs-servers.md)
 
 ---
 
