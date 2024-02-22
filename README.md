@@ -6,7 +6,8 @@ So far, the codebase supports
 - Fine-tuning algorithms offered by the [PEFT](https://github.com/huggingface/peft) package
   - LoRA
 - Open-source LLM families from Hugging Face
-  - Llama 2
+  - Llama2
+  - Mistral
   - Falcon
   - Flan-T5
 - In-context learning
