@@ -13,6 +13,9 @@ from transformers import GemmaForCausalLM, GemmaTokenizer
 # The LLM_Lora base class
 from .llm_lora import LLM_Lora
 
+# For version checking
+from packaging.version import parse
+
 
 class Gemma_Lora(LLM_Lora):
     def __init__(self,
@@ -28,6 +31,9 @@ class Gemma_Lora(LLM_Lora):
                           cutoff_length = cutoff_length,
                           )
         os.environ["TOKENIZERS_PARALLELISM"] = "false"
+
+        if parse(transformers.__version__) < parse("4.38.0"):
+            raise ValueError("Please use Transformers 4.38.0 or higher.")
 
 
     def load_base_model(self):
