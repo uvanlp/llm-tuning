@@ -6,10 +6,11 @@ So far, the codebase supports
 - Fine-tuning algorithms offered by the [PEFT](https://github.com/huggingface/peft) package
   - LoRA
 - Open-source LLM families from Hugging Face
-  - Llama2
-  - Mistral
-  - Falcon
-  - Flan-T5
+  - [Llama2](https://huggingface.co/docs/transformers/main/en/model_doc/llama2)
+  - [Mistral](https://huggingface.co/docs/transformers/main/en/model_doc/mistral)
+  - [Falcon](https://huggingface.co/docs/transformers/main/en/model_doc/falcon)
+  - [Flan-T5](https://huggingface.co/docs/transformers/main/en/model_doc/flan-t5)
+  - [Gemma](https://huggingface.co/docs/transformers/main/en/model_doc/gemma)
 - In-context learning
 
 For detailed instruction, please refer to the Notion site: [LLM Fine-tuning](https://yangfengji.notion.site/UVA-LLM-Fine-tuning-b5a80d6401e24ec6bb7900c4a3400918?pvs=4)
