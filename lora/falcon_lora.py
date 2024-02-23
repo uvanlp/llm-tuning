@@ -44,8 +44,5 @@ class Falcon_Lora(LLM_Lora):
         self.tokenizer = AutoTokenizer.from_pretrained(self.base_model)
         self.tokenizer.pad_token = self.tokenizer.eos_token
         self.tokenizer.pad_token_id = self.tokenizer.eos_token_id
-        # self.tokenizer.padding_side = "left"
-        # print(self.model.parameters)
-        # sys.exit()
 
         
