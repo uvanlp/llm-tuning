@@ -38,7 +38,7 @@ from lora import Llama_Lora
 
 def main(
         task: str = "eval",
-		base_model: str = "meta-llama/Llama-2-7b-hf",
+	base_model: str = "meta-llama/Llama-2-7b-hf",
 	):
     m = Llama_Lora(
         base_model=base_model,
