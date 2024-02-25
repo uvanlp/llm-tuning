@@ -38,10 +38,10 @@ from lora import Llama_Lora
 
 def main(
         task: str = "eval",
-):
-    base_model_name: str = "meta-llama/Llama-2-7b-hf"
+		base_model: str = "meta-llama/Llama-2-7b-hf",
+	):
     m = Llama_Lora(
-        base_model=base_model_name,
+        base_model=base_model,
     )
     if task == "train":
         m.train(
@@ -50,10 +50,6 @@ def main(
             output_dir = "./ckp_sst_llama2_lora",
             train_batch_size = 32,
             num_epochs = 1,
-            group_by_length = False,
-            logging_steps = 5,
-            val_steps = 20,
-            val_batch_size = 8,
         )
     elif task == "eval":
         m.predict(
