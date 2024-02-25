@@ -17,15 +17,6 @@ For detailed instruction, please refer to the Notion site: [LLM Fine-tuning](htt
 
 ---
 
-## Environment Setup
-
-We provide the instructions for setting up the environment for 
-
-- [UVA Rivanna](docs/rivanna.md), and 
-- [UVA CS Servers](docs/cs-servers.md)
-
----
-
 ## A Simple Example
 
 Here is a simple example of using the package for fine-tuning or prediction on the SST2 dataset. You can also find this demo code in `demo.py`. 
@@ -37,9 +28,9 @@ from lora import Llama_Lora
 
 
 def main(
-        task: str = "eval",
+    task: str = "eval",
 	base_model: str = "meta-llama/Llama-2-7b-hf",
-	):
+):
     m = Llama_Lora(
         base_model=base_model,
     )
