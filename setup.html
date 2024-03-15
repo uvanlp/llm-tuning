@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial Website</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Roboto:ital,wght@0,300;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+    <script src="copycode.js"></script>
+    <script>
+        // Function to add '>>>' prompt to Python code blocks
+        function addPythonPrompt() {
+            document.querySelectorAll('pre code.language-python').forEach(function(element) {
+                // Get the content of the code block
+                var content = element.textContent.trim();
+                // Add '>>>' prompt at the beginning of each line
+                content = content.split('\n').map(function(line) {
+                    return '>>> ' + line;
+                }).join('\n');
+                // Update the content of the code block
+                element.textContent = content;
+            });
+        }
+
+        // Add Python prompt before syntax highlighting
+        document.addEventListener('DOMContentLoaded', function() {
+            //addPythonPrompt();
+            // Initialize highlight.js after adding the prompt
+            hljs.initHighlightingOnLoad();
+        });
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar">
+            <img src="logo.png" alt="ILPLogo" class="navbar-logo">
+            <ul>
+                <li href="index.html"><a href="index.html">Quick Tour</a></li>
+                <li href="setup.html"><a href="setup.html">Environment Setup</a></li>
+                <li><a href="data_preparation.html">Data Preparation</a></li>
+                <li><a href="fine_tuning.html">Fine-tuning</a></li>
+                <li><a href="inference.html">Inference</a></li>
+                <li><a href="icl.html">In-Context Learning</a></li>
+                <li><a href="troubleshooting.html">Troubleshooting</a></li>
+                <li><a href="license.html">License</a></li>
+            </ul>
+            <div class="llama-falcon-container">
+                <img src="llama-emoji.png" alt="Llama_pic" class="llama-pic">
+                <img src="falcon-emoji.png" alt="Falcon_pic" class="falcon-pic">
+            </div>
+        </nav>
+        <div class="content" style="margin-bottom:50px;">
+            <h1 class="Title">Setting up Environment</h1>
+            <hr style="color:rgb(218, 218, 218); margin-top:2px">
+            <p> The instructions are customized for two servers (Rivanna HPC and CS Department server)
+                that are popularly used at UVA and the CS department. 
+                However, any of the following instruction can be easily adopted to any Linux server. 
+                For the servers that are not using <code class="small-code">SLURM</code> for job scheduling or module for package management, 
+                the setup is even simpler. 
+            </p>
+            <div class="Rivanna">
+                <h1 class="subtitle">For Rivanna server</h1>
+                <hr style="color:rgb(218, 218, 218); margin-top:2px">
+                <h2> Preparation and Login</h2>
+                <p> Please first download the UVA VPN to successfully connect remotely to the server, 
+                    unless you are connecting to the UVA Wifi.
+                    Then, log into the server in terminal using the following command.
+                </p>
+                <div class="code-container">
+<pre><code class="language-bash">ssh [computing-ID]@rivanna.hpc.virginia.edu
+</code></pre>
+                    <button class="copy-button" onclick="copyCode(this)">
+                        <img src="copycode.png"> 
+                    </button>
+                </div>
+
+                <p> Type in the password as prompted.
+                    Then, use the following command to load relevant modules. 
+                </p>
+                <div class="code-container">
+<pre><code class="language-python"> module load anaconda cuda cudnn tmux
+</code></pre>
+                    <button class="copy-button" onclick="copyCode(this)">
+                        <img src="copycode.png"> 
+                    </button>
+                </div>
+
+                <p>Although it is not required, it is recommended to create a tmux session 
+                    to avoid any unexpected interruption on the configuration process.
+                </p>
+                <div class="code-container">
+<pre><code class="language-bash"> tmux new -s llmtuning 
+</code></pre>
+                    <button class="copy-button" onclick="copyCode(this)">
+                        <img src="copycode.png"> 
+                    </button>
+                </div>
+                <p> In case of any interruption, we can log back in using the following command 
+                    and continue the configuration
+                </p>
+                <div class="code-container">
+<pre><code class="language-bash"> tmux a -t llmtuning
+</code></pre>
+                    <button class="copy-button" onclick="copyCode(this)">
+                        <img src="copycode.png"> 
+                    </button>
+                </div>
+                <h2>Finding the cuda version</h2>
+                <p> Please first identify the version of cuda that was loaded 
+                    by using either of the two following commands.</p>
+                <div class="code-container">
+<pre><code class="language-bash"> module avail cuda
+</code></pre>
+                    <button class="copy-button" onclick="copyCode(this)">
+                        <img src="copycode.png"> 
+                    </button>
+                </div>
+                <div>
+                    <img class="screenshot" src="avail.png">
+                </div>
+                <p>The result indicates that the loaded cuda version is 
+                    <code class="small-code">12.2.2</code>, as indicated by <code class="small-code">(L,D)</code>
+                </p>
+
+                <div class="code-container">
+<pre><code class="language-bash"> nvcc -V
+</code></pre>
+                    <button class="copy-button" onclick="copyCode(this)">
+                        <img src="copycode.png"> 
+                    </button>
+                </div>
+                <div>
+                    <img class="screenshot" src="nvcc.png">
+                </div>
+                <p>The result indicates that the loaded cuda version is 
+                    <code class="small-code">12.2</code>.
+                    These two commands give the same major version <code class="small-code">12</code>, 
+                    which is what we need later.
+                </p>
+                <h2>Create a conda environment</h2>
+                <p>
+                Assume the virtual environment name is <code class="small-code">test</code> and the 
+                Python version is <code class="small-code">3.9</code>, we use the following command:
+                </p>
+                <div class="code-container">
+<pre><code class="language-bash"> conda create -n test python=3.9
+</code></pre>
+                    <button class="copy-button" onclick="copyCode(this)">
+                        <img src="copycode.png"> 
+                    </button>
+                </div>
+                <p>Please note that this environment will be created at 
+                    <code class="small-code">/home/COMPUTING-ID/.conda/envs/test</code>
+                    Please ensure there is enough space left 
+                    at the <code class="small-code">/home</code> directory since home only has 50 GB storage.
+                </p>
+                <p> To deactivate an original conda environment and activate the newly created 
+                    <code class="small-code">test</code> environment, use the 
+                    following two commands 
+                </p>
+                <div class="code-container">
+<pre><code class="language-bash"> conda deactivate 
+</code></pre>
+                    <button class="copy-button" onclick="copyCode(this)">
+                        <img src="copycode.png"> 
+                    </button>
+                </div>
+                <div class="code-container">
+<pre><code class="language-bash"> conda activate test
+</code></pre>
+                    <button class="copy-button" onclick="copyCode(this)">
+                        <img src="copycode.png"> 
+                    </button>
+                </div>
+                <p>Install the Pytorch version that is pre-compiled with the cuda version identified</p>
+                <div class="code-container">
+<pre><code class="language-bash"> conda install pytorch torchvision torchaudio pytorch-cuda=12 -c pytorch -c nvidia
+</code></pre>
+                    <button class="copy-button" onclick="copyCode(this)">
+                        <img src="copycode.png"> 
+                    </button>
+                </div>
+                <p>
+                    Note that, <code class="small-code">python-cuda=12</code> aligns with the cuda version 
+                    identified in section 2. 
+                    Failing to specify the correct version of cuda will 
+                    lead to a common error of Python not finding GPUs. 
+                    It may take several minutes to finish the installation.
+                </p>
+                <p>To test whether PyTorch can access GPUs on Rivanna, 
+                    create a simple Python script 
+                    <code class="small-code">test.py</code> as the following </p>
+                <div class="code-container">
+<pre><code class="language-bash">import torch
+print(torch.cuda.is_available())
+</code></pre>
+                    <button class="copy-button" onclick="copyCode(this)">
+                        <img src="copycode.png"> 
+                    </button>
+                </div>
+                <p>Submit the job using a <code class="small-code">slurm</code> script</p>
+                <div class="code-container">
+<pre><code class="language-bash"> # --- Resource related ---            
+#SBATCH --ntasks=1
+#SBATCH -A [user-group-name]
+#SBATCH -t 10:00 # Minute:Second
+#SBATCH -p gpu # Partation type
+#SBATCH --gres=gpu:1 # Request one GPU
+#SBATCH --mem-per-cpu=4GB # CPU memory
+
+# Load the modules
+module load anaconda cuda cudnn
+
+# Activate the virtual Python environment
+conda activate test
+
+# Run the test code
+python test.py
+</code></pre>
+                    <button class="copy-button" onclick="copyCode(this)">
+                        <img src="copycode.png"> 
+                    </button>
+                </div>
+                <p>Use the following command to submit the
+                    <code class="small-code">slurm</code> script to server
+                </p>
+<pre><code class="language-bash"> sbatch slurm.sh          
+</code></pre>
+                <p> Please note that to access GPU we must submit the job using the command.
+                    Directly compile and run in terminal wouldn't have GPU access, as the 
+                    Rivanna portal node that we login does not have any GPU.
+                </p>
+                <p>
+                    If everything works well, 
+                    the printed result (usually stored in a <code class="small-code">*.out</code> file 
+                    associated with the job ID, unless specified) 
+                    from the simple Python script should be True. 
+                    The name of the output file can be specified by adding 
+                    the following to the <code class="small-code">slurm</code> file.
+                </p>
+                <div class="code-container">
+<pre><code class="language-bash">#SBATCH --output=[output-name].out
+</code></pre>
+                    <button class="copy-button" onclick="copyCode(this)">
+                        <img src="copycode.png"> 
+                    </button>
+                </div>
+
+                <h2>Install relevant packages and clone our codebase</h2>
+                <p> After the access to GPU is allset, please 
+                    clone our codebase and install other required packages 
+                    using the following command.
+                </p>
+                <div class="code-container">
+<pre><code class="language-bash">git clone https://github.com/uvanlp/llm-tuning
+</code></pre>
+                    <button class="copy-button" onclick="copyCode(this)">
+                        <img src="copycode.png"> 
+                    </button>
+                </div>
+                <div class="code-container">
+<pre><code class="language-bash">pip install requirements.yml
+</code></pre>
+                    <button class="copy-button" onclick="copyCode(this)">
+                        <img src="copycode.png"> 
+                    </button>
+                </div>
+
+                <h2>Additional (but super important) setup</h2>
+                <p>
+                    By default, the pre-trained models and datasets from Hugging Face 
+                    will be stored in the cache folder under the home directory.
+                    Since the home directory in Rivanna only grants 50GB storage
+                    and we are dealing with LLMs, downloading the models in home directory
+                    will quickly drains the storage. 
+                    Thus, we must change the download path to be 
+                    in <code class="small-code">scratch</code> directory.
+                    Use the following command:
+                </p>
+                <div class="code-container">
+<pre><code class="language-bash">export TRANSFORMERS_CACHE="/scratch/[Computing-ID]/huggingface/hub"
+export HF_DATASETS_CACHE="/scratch/[Computing-ID]/huggingface/datasets"
+</code></pre>
+                    <button class="copy-button" onclick="copyCode(this)">
+                        <img src="copycode.png"> 
+                    </button>
+                </div>
+                <p>
+                    In our case, <code class="small-code">hub</code> 
+                    stores the downloaded pre-trained models, while
+                    <code class="small-code">datasets</code> 
+                    stores the downloaded dataset.
+                </p>
+                <p>
+                    In the future version of Transformers, 
+                    <code class="small-code">TRANSFORMERS_CACHE</code> will be replaced with HF_HOME. 
+                </p>
+
+
+            </div>
+    </div>
+</body>
+</html>

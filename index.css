@@ -1,0 +1,140 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh; 
+}
+
+.container {
+    display: flex;
+    flex: 1; 
+}
+
+.navbar {
+    background-color: #333;
+    color: #fff;
+    width: 20%; 
+    position: fixed;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    overflow-y: auto; 
+    display: flex;
+    flex-direction: column; 
+}
+
+.navbar ul {
+    list-style-type: none;
+    padding: 0;
+    height: 60%;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between; 
+
+}
+
+.navbar ul li {
+    padding-left: 30px;
+    font-size: 20px;
+    margin-bottom:10px;
+    text-align: left;
+    line-height: 2.7;
+}
+
+.navbar ul li:hover {
+    background-color: #555
+}
+
+.navbar ul li a {
+    font: "Libre Baskerville";
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+}
+
+.content {
+    flex:1;
+    margin-left: 25%;
+    margin-right: 10%;
+    padding-bottom: 10%;
+}
+
+.content h1 {
+    margin-top: 0;
+}
+.navbar-logo {
+    margin-top:5px;
+    width: 100%; 
+    height: auto; 
+    margin-bottom: 10px; 
+}
+
+.llama-falcon-container {
+    height: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.llama-pic,
+.falcon-pic {
+    width:50%;
+}
+
+.Title{
+    padding-top: 20px;
+    font-size: 50px;
+    font-weight: 300;
+}
+
+
+.copy-button {
+    position: absolute;
+    top: 5px;
+    right: 30px;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    display: none; 
+}
+
+#copiedMessage{
+    position: absolute;
+    top: 25px;
+    right: 50px;
+    width: 20px;
+    height: 5px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    display: none; 
+    font-size: 15px;
+}
+
+.copy-button img {
+    width: 100%;
+    height: 100%;
+}
+
+.code-container:hover .copy-button {
+    display: block; 
+}
+
+
+.code-container {
+    position: relative;
+}
+
+.small-code{
+        color: #6670FF;
+}
+.subtitle{
+    font-weight: 500;
+}
+.screenshot{
+    width:100%
+}

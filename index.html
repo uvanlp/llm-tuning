@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial Website</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Roboto:ital,wght@0,300;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+
+    <script>
+        function addPythonPrompt() {
+            document.querySelectorAll('pre code.language-python').forEach(function(element) {
+                // Get the content of the code block
+                var content = element.textContent.trim();
+                // Add '>>>' prompt at the beginning of each line
+                content = content.split('\n').map(function(line) {
+                    return '>>> ' + line;
+                }).join('\n');
+                // Update the content of the code block
+                element.textContent = content;
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            addPythonPrompt();
+            hljs.initHighlightingOnLoad();
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar">
+            <img src="logo.png" alt="ILPLogo" class="navbar-logo">
+            <ul>
+                <li href="index.html"><a href="index.html">Quick Tour</a></li>
+                <li href="setup.html"><a href="setup.html">Environment Setup</a></li>
+                <li><a href="data_preparation.html">Data Preparation</a></li>
+                <li><a href="fine_tuning.html">Fine-tuning</a></li>
+                <li><a href="inference.html">Inference</a></li>
+                <li><a href="icl.html">In-Context Learning</a></li>
+                <li><a href="troubleshooting.html">Troubleshooting</a></li>
+                <li><a href="license.html">License</a></li>
+            </ul>
+            <div class="llama-falcon-container">
+                <img src="llama-emoji.png" alt="Llama_pic" class="llama-pic">
+                <img src="falcon-emoji.png" alt="Falcon_pic" class="falcon-pic">
+            </div>
+        </nav>
+        <div class="content">
+            <h1 class="Title">Quick Tour & Introduction</h1>
+            <hr style="color:rgb(218, 218, 218); margin-top:2px">
+            <h2> Introduction</h2>
+            <div class="Introduction">
+                <p>This LLM fine-tuning package is developed by the Information and Language Processing Group at the University of Virginia, led by Professor Yangfeng Ji.
+                This package is to provide a light-weight codebase to easily fine-tune some open-source LLMs in a parameter-efficient way and reproduce the results by providing a high level API built upon the Huggingface interfaces.
+                </p>
+            </div>
+            <div class="LLM_PEFT">
+                <p>So far, our codebase supports the following open source LLMs:</p>
+                <ul>
+                    <li><a href="https://huggingface.co/docs/transformers/main/en/model_doc/llama2">LLama2</a></li>
+                    <li><a href="https://huggingface.co/docs/transformers/main/en/model_doc/mistral">Mistral</a></li>
+                    <li><a href="https://huggingface.co/docs/transformers/main/en/model_doc/falcon">Falcon</a></li>
+                    <li><a href="https://huggingface.co/docs/transformers/main/en/model_doc/flan-t5">Flan-T5</a></li>
+                    <li><a href="https://huggingface.co/docs/transformers/main/en/model_doc/gemma">Gemma</a></li>
+                </ul>
+                <p> So far, our codebase supports the following Parameter Efficent Fine Tuning methods:</p>
+                <ul>
+                    <li><a>Low Rank Approximation </a></li>
+                </ul>
+            </div>
+            <div class="pipeline">
+                <h2> The pipeline to use our codebase</h2>
+                <p>Please follow these steps to setup and use our codebase. 
+                    The navigation bar on the left would help you locate the relevant pages. 
+                </p>
+                <ol>
+                    <li> Setting up environment to use GPU acceleration on servers and install required packages. </li>
+                    <li> Preparing the data to be in the format accepted by our codebase.</li>
+                    <li> Pick an open-source LLM supported by our codebase and start supervised fine-tuning or In-Context Learning.</li>
+                    <li> Save the trained model and condudct inference.</li>
+                </ol>
+                <p>Please see our troubleshooting page for debugging purpose. </p>
+            </div>
+            <div class="contributor">
+                <h2> Contributors to this codebase</h2>
+                <ul>
+                    <li><a href="https://yangfengji.net/">Yangfeng Ji</a></li>
+                    <li><a href="https://wyu-du.github.io/">Wanyu Du</a></li>
+                    <li><a href="https://aidansan.github.io/">Aidan San</a></li>
+                    <li><a href="https://zhengguangw.github.io/">Zhengguang Wang</a></li>
+                </ul>
+                <p> Additionally, this codebase is tested by many members at the ILP lab.</p>
+            </div>
+        </div> 
+    </div>
+</body>
+</html>

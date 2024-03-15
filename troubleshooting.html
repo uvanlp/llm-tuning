@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial Website</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Roboto:ital,wght@0,300;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+
+    <script>
+        // Function to add '>>>' prompt to Python code blocks
+        function addPythonPrompt() {
+            document.querySelectorAll('pre code.language-python').forEach(function(element) {
+                // Get the content of the code block
+                var content = element.textContent.trim();
+                // Add '>>>' prompt at the beginning of each line
+                content = content.split('\n').map(function(line) {
+                    return '>>> ' + line;
+                }).join('\n');
+                // Update the content of the code block
+                element.textContent = content;
+            });
+        }
+
+        // Add Python prompt before syntax highlighting
+        document.addEventListener('DOMContentLoaded', function() {
+            addPythonPrompt();
+            // Initialize highlight.js after adding the prompt
+            hljs.initHighlightingOnLoad();
+        });
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar">
+            <img src="logo.png" alt="ILPLogo" class="navbar-logo">
+            <ul>
+                <li href="index.html"><a href="index.html">Quick Tour</a></li>
+                <li href="setup.html"><a href="setup.html">Environment Setup</a></li>
+                <li><a href="data_preparation.html">Data Preparation</a></li>
+                <li><a href="fine_tuning.html">Fine-tuning</a></li>
+                <li><a href="inference.html">Inference</a></li>
+                <li><a href="icl.html">In-Context Learning</a></li>
+                <li><a href="troubleshooting.html">Troubleshooting</a></li>
+                <li><a href="license.html">License</a></li>
+            </ul>
+            <div class="llama-falcon-container">
+                <img src="llama-emoji.png" alt="Llama_pic" class="llama-pic">
+                <img src="falcon-emoji.png" alt="Falcon_pic" class="falcon-pic">
+            </div>
+        </nav>
+        <div class="content">
+            <h1 class="Title">Quick Tour & Introduction</h1>
+            <hr style="color:rgb(218, 218, 218); margin-top:2px">
+            <div class="Introduction">
+                <p>This LLM fine-tuning package is developed by the Information and Language Processing Group at the University of Virginia, led by Professor Yangfeng Ji.
+                This package is to provide a light-weight codebase to easily fine-tune some open-source LLMs in a parameter-efficient way and reproduce the results by providing a high level API built upon the Huggingface interfaces.
+                </p>
+            </div>
+            <div class="LLMs">
+                <p>So far, our codebase supports the following open source LLMs:</p>
+                <ul>
+                    <li><a>LLama2</a></li>
+                    <li><a>Mistral</a></li>
+                    <li><a>Falcon</a></li>
+                    <li><a>Flan-T5</a></li>
+                </ul>
+                <p>Below is an example of a Python code block:</p>
+                    <pre><code class="language-python">print()
+for i in 1:
+    print
+12.2
+                    </code></pre>
+                <h2>Code Block Example:</h2>
+            <p>Below is an example of a code block:</p>
+            <pre><code class="language-python">
+                conda create -n test python=3.9</code></pre>
+            <div class="Contributors"></div>
+            
+        </div>
+    </div>
+</body>
+</html>
