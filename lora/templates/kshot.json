@@ -1,6 +1,6 @@
 
 {
-    "description": "Template used by LLM-Finetuning.",
+    "description": "Template used for k-shot in-context learning.",
     "response_split": "### Response:",
     "instruction": "Following the examples, write a response that appropriately completes the request.\n\n### Instruction:\n{instruction}",
     "demo_part": "\n\n### Input:\n{input}\n\n### Response:\n{output}",

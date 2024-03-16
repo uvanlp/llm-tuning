@@ -76,4 +76,6 @@ python demo.py --task train
 - [Zhengguang Wang](https://zhengguangw.github.io)
 
 
-In addition, this package has been tested by many members from the [UVA ILP](https://uvanlp.org) group via their research projects.
+In addition, this package has been tested by many members from the [UVA ILP](https://uvanlp.org) group via their research projects. 
+
+This project was inspired by the [Alpaca-LoRA](https://github.com/tloen/alpaca-lora) project, from which we learned a lot! 

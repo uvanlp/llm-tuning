@@ -1,6 +1,6 @@
 
 {
-    "description": "Template used by Alpaca-LoRA.",
+    "description": "Template for instruction-based fine-tuning.",
     "prompt_input": "Write a response that appropriately completes the request.\n\n### Instruction:\n{instruction}\n\n### Input:\n{input}\n\n### Response:\n",
     "response_split": "### Response:"
 }
