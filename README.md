@@ -74,6 +74,7 @@ python demo.py --task train
 - [Yangfeng Ji](https://yangfengji.net)
 - [Wanyu Du](https://wyu-du.github.io)
 - [Aidan San](https://aidansan.github.io)
+- [Caroline Gihlstorf]()
 - [Zhengguang Wang](https://zhengguangw.github.io)
 
 
