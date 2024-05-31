@@ -21,14 +21,12 @@ class Pythia_Lora(LLM_Lora):
                  lora_target_modules: List[str] = ["query_key_value", "dense"],
                  load_in_8bit: bool = False,
                  cutoff_length: int = 256,
-                 template_name: str = "base",
                  ):
         LLM_Lora.__init__(self,
                           base_model = base_model,
                           lora_target_modules = lora_target_modules,
                           load_in_8bit = load_in_8bit,
                           cutoff_length = cutoff_length,
-                          template_name = template_name,
                           )
 
 
