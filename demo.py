@@ -1,22 +1,26 @@
 import fire
 
-from lora import Llama_Lora, Gemma_Lora
+from lora import Llama_Lora, Gemma_Lora, Pythia_Lora
 
 
 def main(
-        task: str = "eval",
-        llm: str = "gemma",
-        base_model: str = "google/gemma-7b-it",
+        task: str = "train",
+        llm: str = "pythia",
+        base_model: str = "EleutherAI/pythia-6.9b" # "google/gemma-7b-it",
 ):
     # base_model_name: str = "meta-llama/Llama-2-7b-hf"
     if len(base_model) == 0:
         raise ValueError("Please specify the base model.")
     if llm == "llama":
         m = Llama_Lora(
-            base_model=base_model,
+            base_model = base_model,
         )
     elif llm == "gemma":
         m = Gemma_Lora(
+            base_model = base_model,
+        )
+    elif llm == "pythia":
+        m = Pythia_Lora(
             base_model = base_model,
         )
     else:
@@ -41,7 +45,7 @@ def main(
             verbose = True,
         )
     else:
-        raise ValueError(f"Unknown model name: {base_model_name}")
+        raise ValueError(f"Unrecognized task name: {task}")
 
 
 if __name__ == "__main__":

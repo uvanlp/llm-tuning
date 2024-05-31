@@ -11,6 +11,7 @@ So far, the codebase supports
   - [Falcon](https://huggingface.co/docs/transformers/main/en/model_doc/falcon)
   - [Flan-T5](https://huggingface.co/docs/transformers/main/en/model_doc/flan-t5)
   - [Gemma](https://huggingface.co/docs/transformers/main/en/model_doc/gemma)
+  - [Pythia](https://huggingface.co/papers/2304.01373)
 - In-context learning
 
 For detailed instruction, please refer to the Notion site: [LLM Fine-tuning](https://yangfengji.notion.site/UVA-LLM-Fine-tuning-b5a80d6401e24ec6bb7900c4a3400918?pvs=4)
@@ -73,6 +74,7 @@ python demo.py --task train
 - [Yangfeng Ji](https://yangfengji.net)
 - [Wanyu Du](https://wyu-du.github.io)
 - [Aidan San](https://aidansan.github.io)
+- [Caroline Gihlstorf]()
 - [Zhengguang Wang](https://zhengguangw.github.io)
 
 
