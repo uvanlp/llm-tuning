@@ -12,6 +12,9 @@ from transformers import GPTNeoXForCausalLM, AutoTokenizer
 # The LLM_Lora base class
 from .llm_lora import LLM_Lora
 
+import os
+os.environ["TOKENIZER_PARALLELISM"] = "false"
+
 # For some reason pythia should not be loaded in 8bit
 # RuntimeError: expected mat1 and mat2 to have the same dtype, but got: c10::Half != float
 
