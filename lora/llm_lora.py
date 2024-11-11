@@ -186,7 +186,7 @@ class LLM_Lora(object):
             # Split the training set if no val_file
             print(f"Get some val examples from the training set")
             train_val = train_data.train_test_split(
-                test_size=val_set_size, shuffle=False, seed=42
+                test_size=val_set_size, shuffle=True, seed=42
             )
             train_data = train_val["train"]
             val_data = train_val["test"]
