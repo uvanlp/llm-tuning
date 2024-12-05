@@ -5,10 +5,9 @@ from lora import Llama_Lora, Gemma_Lora, Pythia_Lora
 
 def main(
         task: str = "train",
-        llm: str = "pythia",
-        base_model: str = "EleutherAI/pythia-6.9b" # "google/gemma-7b-it",
+        llm: str = "llama",
+        base_model: str = "meta-llama/Llama-2-7b-hf",
 ):
-    # base_model_name: str = "meta-llama/Llama-2-7b-hf"
     if len(base_model) == 0:
         raise ValueError("Please specify the base model.")
     if llm == "llama":

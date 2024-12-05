@@ -5,7 +5,7 @@ from typing import List, Union
 
 import torch
 import transformers
-from transformers import GenerationConfig
+from transformers import GenerationConfig, BitsAndBytesConfig
 from datasets import load_dataset
 
 from .utils import identify_label
@@ -17,7 +17,7 @@ from peft import (
     PeftModel,
     get_peft_model,
     get_peft_model_state_dict,
-    prepare_model_for_int8_training,
+    prepare_model_for_kbit_training,
     set_peft_model_state_dict,
 )
 
@@ -45,7 +45,6 @@ class LLM_Lora(object):
         self.base_model = base_model
         self.prompter = None
         self.lora_target_modules = lora_target_modules
-        self.load_in_8bit = load_in_8bit
         self.cutoff_length = cutoff_length
         self.model = None
         self.tokenizer = None
@@ -53,6 +52,9 @@ class LLM_Lora(object):
         self.gen_config = None # for generation configuration
         self.train_on_inputs = False
         self.add_eos_token = False
+        self.bnb_config = BitsAndBytesConfig(
+            load_in_8bit = load_in_8bit,
+            )
         
 
             
@@ -126,7 +128,7 @@ class LLM_Lora(object):
         
         # ==========================================
         # Prepare the model for training
-        self.model = prepare_model_for_int8_training(self.model)
+        self.model = prepare_model_for_kbit_training(self.model)
         self.config = LoraConfig(
             r=lora_r,
             lora_alpha=lora_alpha,

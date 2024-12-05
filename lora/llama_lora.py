@@ -36,7 +36,7 @@ class Llama_Lora(LLM_Lora):
         print(f"Load the pre-trained model: {self.base_model}")
         self.model = LlamaForCausalLM.from_pretrained(
             self.base_model,
-            load_in_8bit=self.load_in_8bit,
+            quantization_config=self.bnb_config,
             torch_dtype=torch.float16,
             device_map="auto",
         )
