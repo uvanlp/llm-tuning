@@ -97,6 +97,8 @@ class LLM_Lora(object):
               wandb_run_name: str = "",
               wandb_watch: str = "",
               wandb_log_model: str = "",
+              #checkpoints
+              resume_from_checkpoint: str = None,  # either training checkpoint or final adapter
               ):
 
         print(f"learning rate: {learning_rate}\n")
@@ -139,6 +141,28 @@ class LLM_Lora(object):
         )
         self.model = get_peft_model(self.model, self.config)
         self.model.print_trainable_parameters()
+
+        # ==========================================
+        # Enable continuous training via checkpoint loading
+        if resume_from_checkpoint:
+            # Check the available weights and load them
+            checkpoint_name = os.path.join(
+                resume_from_checkpoint, "pytorch_model.bin"
+            )  # Full checkpoint
+            if not os.path.exists(checkpoint_name):
+                checkpoint_name = os.path.join(
+                    resume_from_checkpoint, "adapter_model.bin"
+                )  # only LoRA model - LoRA config above has to fit
+                resume_from_checkpoint = (
+                    False  # So the trainer won't try loading its state
+                )
+            # The two files above have a different name depending on how they were saved, but are actually the same.
+            if os.path.exists(checkpoint_name):
+                print(f"Restarting from {checkpoint_name}")
+                adapters_weights = torch.load(checkpoint_name)
+                set_peft_model_state_dict(self.model, adapters_weights)
+            else:
+                print(f"Checkpoint {checkpoint_name} not found")  
         
         # ==========================================
         # Load data
@@ -234,7 +258,7 @@ class LLM_Lora(object):
         if torch.__version__ >= "2" and sys.platform != "win32":
             self.model = torch.compile(self.model)
 
-        trainer.train()
+        trainer.train(resume_from_checkpoint=resume_from_checkpoint)
 
         self.model.save_pretrained(output_dir)
 
