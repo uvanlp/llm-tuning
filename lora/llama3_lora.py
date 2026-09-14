@@ -13,7 +13,7 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 # The LLM_Lora base class
 from .llm_lora import LLM_Lora
 
-class Llama_Lora(LLM_Lora):
+class Llama3_Lora(LLM_Lora):
     def __init__(self,
                  base_model: str = "",
                  lora_target_modules: List[str] = ["q_proj", "v_proj"],

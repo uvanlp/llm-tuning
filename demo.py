@@ -1,6 +1,6 @@
 import fire
 
-from lora import Llama_Lora, Gemma_Lora, Pythia_Lora
+from lora import Llama_Lora, Gemma_Lora, Pythia_Lora, Llama3_Lora
 
 
 def main(
@@ -12,6 +12,10 @@ def main(
         raise ValueError("Please specify the base model.")
     if llm == "llama":
         m = Llama_Lora(
+            base_model = base_model,
+        )
+    elif llm == "llama3":
+        m = Llama3_Lora(
             base_model = base_model,
         )
     elif llm == "gemma":
